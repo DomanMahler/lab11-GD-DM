@@ -1,56 +1,56 @@
 import unittest
 from calculator import *
 
-class TestCalculator(unittest.TestCase):
-    ######### Partner 2
-    # def test_add(self): # 3 assertions
-    #     fill in code
 
-    # def test_subtract(self): # 3 assertions
-    #     fill in code
-    # ##########################
+import math
+import pytest
+import calculator
 
-    ######## Partner 1
-    # def test_multiply(self): # 3 assertions
-    #     fill in code
+def test_add():
+    # basic positives
+    assert calculator.add(2, 3) == 5
+    # with negatives
+    assert calculator.add(-4, 1) == -3
+    # with zero
+    assert calculator.add(0, 10) == 10
 
-    # def test_divide(self): # 3 assertions
-    #     fill in code
-    # ##########################
 
-    ######## Partner 2
-    # def test_divide_by_zero(self): # 1 assertion
-    #     # call division function inside, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #     div(0, 5)
-    #     fill in code
+def test_subtract():
+    # simple subtraction
+    assert calculator.sub(5, 3) == 2
+    # negative result
+    assert calculator.sub(3, 5) == -2
+    # subtracting zero
+    assert calculator.sub(7, 0) == 7
 
-    # def test_logarithm(self): # 3 assertions
-    #     fill in code
 
-    # def test_log_invalid_base(self): # 1 assertion
-    #     # use same technique from test_divide_by_zero
-    #     fill in code
-    # ##########################
-    
-    ######## Partner 1
-    # def test_log_invalid_argument(self): # 1 assertion
-    #     # call log function inside, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #     logarithm(0, 5)
-    #     fill in code
+def test_divide_by_zero():
+    """
+    Lab spec: div(a, b) does b / a and raises ZeroDivisionError if a == 0.
+    So we set a == 0 and any b.
+    """
+    with pytest.raises(ZeroDivisionError):
+        calculator.div(0, 10)
 
-    # def test_hypotenuse(self): # 3 assertions
-    #     fill in code
 
-    # def test_sqrt(self): # 3 assertions
-    #     # Test for invalid argument, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #    square_root(NUM)
-    #     # Test basic function
-    #     fill in code
-    ##########################
+def test_logarithm():
+    """
+    log(a, b) = log_a(b)
+    Test a known value: log_2(8) = 3.
+    """
+    result = calculator.log(2, 8)
+    assert math.isclose(result, 3.0, rel_tol=1e-9)
 
-# Do not touch this
+def test_log_invalid_base():
+
+    with pytest.raises(ValueError):
+        calculator.log(0, 10)
+
+    with pytest.raises(ValueError):
+        calculator.log(1, 10)
+
+    with pytest.raises(ValueError):
+        calculator.log(2, 0)
+
 if __name__ == "__main__":
     unittest.main()
