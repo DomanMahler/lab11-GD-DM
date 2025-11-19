@@ -1,5 +1,5 @@
 import unittest
-from calculator import *
+
 
 
 import math
@@ -7,7 +7,7 @@ import pytest
 import calculator
 
 def test_add():
-    # basic positives
+
     assert calculator.add(2, 3) == 5
     # with negatives
     assert calculator.add(-4, 1) == -3
@@ -16,11 +16,10 @@ def test_add():
 
 
 def test_subtract():
-    # simple subtraction
+
     assert calculator.sub(5, 3) == 2
-    # negative result
     assert calculator.sub(3, 5) == -2
-    # subtracting zero
+
     assert calculator.sub(7, 0) == 7
 
 
