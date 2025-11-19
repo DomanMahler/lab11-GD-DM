@@ -1,7 +1,5 @@
+# https://github.com/DomanMahler/lab11-GD-DM
 import unittest
-
-
-
 import math
 import pytest
 import calculator
