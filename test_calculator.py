@@ -16,7 +16,7 @@ def test_subtract():
 
 def test_divide_by_zero():
     with pytest.raises(ZeroDivisionError):
-        calculator.divide(0, 10)
+        calculator.div(0, 10)
 
 def test_logarithm():
     result = calculator.logarithm(8, 2)
@@ -30,10 +30,10 @@ def test_log_invalid_base():
 #Partner 1 tests
 
 def test_multiply():
-    assert calculator.multiply(3, 4) == 12
+    assert calculator.mul(3, 4) == 12
 
 def test_divide():
-    assert calculator.divide(2, 10) == 5
+    assert calculator.div(2, 10) == 5
 
 def test_log_invalid_argument():
     with pytest.raises(ValueError):
