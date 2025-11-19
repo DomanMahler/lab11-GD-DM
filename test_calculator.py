@@ -1,48 +1,49 @@
 # https://github.com/DomanMahler/lab11-GD-DM
 # Partner 1: Gavin DeYoung
 # Partner 2: Doman Mahler
-
-import pytest
-import math
+import unittest
 import calculator
 
-#Partner 2 tests
+class TestCalculator(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(calculator.add(5, 3), 8)
 
-def test_add():
-    assert calculator.add(5, 3) == 8
+    def test_subtract(self):
+         self.assertEqual(calculator.subtract(10, 4), 6)
 
-def test_subtract():
-    assert calculator.subtract(10, 4) == 6
+    def test_divide_by_zero(self):
+        with self.assertRaises(ZeroDivisionError):
+            calculator.div(0, 10)
 
-def test_divide_by_zero():
-    with pytest.raises(ZeroDivisionError):
-        calculator.div(0, 10)
+    def test_logarithm(self):
+        self.assertAlmostEqual(calculator.logarithm(8, 2), 3.0, places=6)
 
-def test_logarithm():
-    result = calculator.logarithm(8, 2)
-    assert math.isclose(result, 3.0, rel_tol=1e-9)
-
-def test_log_invalid_base():
-    with pytest.raises(ValueError):
-        calculator.logarithm(10, -1)
+    def test_log_invalid_base(self):
+        with self.assertRaises(ValueError):
+            calculator.logarithm(10, -1)
 
 
 #Partner 1 tests
+def test_multiply(self):
+    self.assertEqual(calculator.mul(3, 4), 12)
 
-def test_multiply():
-    assert calculator.mul(3, 4) == 12
 
-def test_divide():
-    assert calculator.div(2, 10) == 5
+def test_divide(self):
+    self.assertEqual(calculator.div(2, 10), 5)
 
-def test_log_invalid_argument():
-    with pytest.raises(ValueError):
+
+def test_log_invalid_argument(self):
+    with self.assertRaises(ValueError):
         calculator.logarithm(-5, 2)
 
-def test_hypotenuse():
-    result = calculator.hypotenuse(3, 4)
-    assert math.isclose(result, 5.0, rel_tol=1e-9)
 
-def test_sqrt():
-    result = calculator.square_root(16)
-    assert result == 4
+def test_hypotenuse(self):
+    self.assertAlmostEqual(calculator.hypotenuse(3, 4), 5.0, places=6)
+
+
+def test_sqrt(self):
+    self.assertEqual(calculator.square_root(16), 4)
+
+
+if __name__ == '__main__':
+    unittest.main()
