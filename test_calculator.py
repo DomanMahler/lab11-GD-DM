@@ -22,27 +22,21 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculator.logarithm(10, -1)
 
+    def test_multiply(self):
+        self.assertEqual(calculator.mul(3, 4), 12)
 
-#Partner 1 tests
-def test_multiply(self):
-    self.assertEqual(calculator.mul(3, 4), 12)
+    def test_divide(self):
+        self.assertEqual(calculator.div(2, 10), 5)
 
+    def test_log_invalid_argument(self):
+        with self.assertRaises(ValueError):
+            calculator.logarithm(-5, 2)
 
-def test_divide(self):
-    self.assertEqual(calculator.div(2, 10), 5)
+    def test_hypotenuse(self):
+        self.assertAlmostEqual(calculator.hypotenuse(3, 4), 5.0, places=6)
 
-
-def test_log_invalid_argument(self):
-    with self.assertRaises(ValueError):
-        calculator.logarithm(-5, 2)
-
-
-def test_hypotenuse(self):
-    self.assertAlmostEqual(calculator.hypotenuse(3, 4), 5.0, places=6)
-
-
-def test_sqrt(self):
-    self.assertEqual(calculator.square_root(16), 4)
+    def test_sqrt(self):
+        self.assertEqual(calculator.square_root(16), 4)
 
 
 if __name__ == '__main__':
